@@ -1,0 +1,1 @@
+forever -w --watchDirectory . --watchIgnore *.log -o ./log/out.log -e ./log/err.log index.js
