@@ -1,6 +1,14 @@
 exports.index = function (request, response) {
     request.logger.debug('this is a debug message');
-    response.send(request.myPackage.run());
+    request.$mongo.then(function (connection) {
+        connection.collections(function (error, collections) {
+            var collectionNames = [];
+            collections.forEach(function (collection) {
+                collectionNames.push(collection.s.name);
+            });
+            response.json(collectionNames);
+        });
+    })
 };
 
 exports.more = function (request, response) {
