@@ -21,6 +21,6 @@ Vagrant.configure(2) do |config|
      echo "cd /apps" >> /home/vagrant/.bashrc
      cd /apps/ && npm install
      sudo npm install -g forever
-     cd /apps/ && forever start index.js
+     cd /apps/ && forever -w --watchDirectory . --watchIgnore *.log -o ./log/out.log -e ./log/err.log index.js
   SHELL
 end
