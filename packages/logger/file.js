@@ -15,4 +15,5 @@ var FileLogger = function (fs) {
     };
 };
 
+
 module.exports = FileLogger;
