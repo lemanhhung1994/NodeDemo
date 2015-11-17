@@ -1,11 +1,13 @@
 var express = require('express');
+var routing = require('./routes');
+var configuring = require('./config');
+var serviceRegistration = require('./services');
 var app     = express();
-var someController
-            = require('./controllers/some-controller');
 
+configuring(app);
 
+serviceRegistration(app);
 
-app.get('/', someController.index);
-app.get('/more', someController.more);
+routing(app);
 
-app.listen(3000);
+app.listen(app.get('port'));

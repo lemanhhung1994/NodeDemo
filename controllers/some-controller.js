@@ -1,5 +1,5 @@
 exports.index = function (request, response) {
-    response.send('index action of some controller')
+    response.send(request.myPackage.run());
 };
 
 exports.more = function (request, response) {
