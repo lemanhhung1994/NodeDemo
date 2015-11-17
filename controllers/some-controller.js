@@ -1,4 +1,5 @@
 exports.index = function (request, response) {
+    request.logger.debug('this is a debug message');
     response.send(request.myPackage.run());
 };
 

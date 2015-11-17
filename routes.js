@@ -4,5 +4,4 @@ var someController
 module.exports = function (app) {
     app.get('/', someController.index);
     app.get('/more', someController.more);
-
 };
