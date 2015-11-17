@@ -18,6 +18,6 @@ Vagrant.configure(2) do |config|
      curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
      sudo apt-get install -y nodejs
      sudo apt-get install -y build-essential
-     echo "cd /vagrant_projects/my-project" >> /home/vagrant/.bashrc
+     echo "cd /apps" >> /home/vagrant/.bashrc
   SHELL
 end
