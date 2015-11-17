@@ -1,12 +1,11 @@
 var express = require('express');
 var app     = express();
-var myPackageService
-            = require('./packages/my-package');
+var someController
+            = require('./controllers/some-controller');
 
-app.use(myPackageService);
 
-app.get('/', function (request, response) {
-   response.send(request.myPackage.run());
-});
+
+app.get('/', someController.index);
+app.get('/more', someController.more);
 
 app.listen(3000);
