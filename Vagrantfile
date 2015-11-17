@@ -19,5 +19,8 @@ Vagrant.configure(2) do |config|
      sudo apt-get install -y nodejs
      sudo apt-get install -y build-essential
      echo "cd /apps" >> /home/vagrant/.bashrc
+     cd /apps/ && npm install
+     sudo npm install -g forever
+     cd /apps/ && forever start index.js
   SHELL
 end
