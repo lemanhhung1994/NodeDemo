@@ -1,6 +1,6 @@
 var Promise = require('bluebird');
-var bcrypt  = require('bcrypt-nodejs');
-var Auth = function (connection) {
+
+var Auth = function (connection, hasher) {
 
     this.attempt = function (username, password) {
         return new Promise(function (resolve, reject) {
@@ -14,11 +14,12 @@ var Auth = function (connection) {
                         } else {
                             if (result.length == 0) {
                                 reject(new Error('Auth fail: incorrect username'));
-                            }
-                            if (bcrypt.compareSync(password, result[0].password)) {
-                                resolve(result[0]);
                             } else {
-                                reject(new Error('Auth fail: incorrect password'));
+                                return hasher.check(password, result[0].password).then(function () {
+                                    resolve(result[0]);
+                                }, function () {
+                                    reject(new Error('Auth fail: incorrect password'))
+                                });
                             }
                         }
                     })

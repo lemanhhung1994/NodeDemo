@@ -8,5 +8,16 @@ module.exports = function (app) {
         file: {
             path: __dirname + '/log/' + moment(new Date()).format('YYYY-MM-DD') + '.log'
         }
-    })
+    });
+
+    app.set('hasher', {
+        adapter: 'bcrypt',
+        bcrypt: {
+            salt: '123123',
+            size: 10
+        },
+        md5: {
+
+        }
+    });
 };
