@@ -1,7 +1,12 @@
 var BCryptHasher = require('./bcrypt-adapter');
+var MD5Hasher    = require('./md5-adapter');
 
 
 module.exports = function (request, response, next) {
-    request.hasher = new BCryptHasher();
+    if(request.app.get('hasher').adapter == 'bcrypt') {
+        request.hasher = new BCryptHasher();
+    } else {
+        request.hasher = new MD5Hasher();
+    }
     next();
 };

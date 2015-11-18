@@ -11,13 +11,6 @@ module.exports = function (app) {
     });
 
     app.set('hasher', {
-        adapter: 'bcrypt',
-        bcrypt: {
-            salt: '123123',
-            size: 10
-        },
-        md5: {
-
-        }
+        adapter: 'bcrypt'
     });
 };

@@ -12,5 +12,10 @@ module.exports = function (app) {
             console.dir(error);
             response.send('login fail');
         });
+    });
+    app.get('/hash', function (req, res) {
+        req.hasher.hash(req.query.hash).then(function (hash) {
+            res.send(hash);
+        });
     })
 };
